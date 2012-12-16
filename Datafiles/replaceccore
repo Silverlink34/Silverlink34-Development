@@ -1,0 +1,15 @@
+ui_print("*************************");
+ui_print("*       CyanCore        *");
+ui_print("*                       *");
+ui_print("*   Brought to you by:  *");
+ui_print("*    Team SpeedCore     *");
+ui_print("*                       *");
+ui_print("*    <-Developers->     *");
+ui_print("*       2tealth         *");
+ui_print("*     Silverlink34      *");
+ui_print("*                       *");
+ui_print("*<Performance Optimizer>*");
+ui_print("*      The Doctor       *");
+ui_print("*        Taecon         *");
+ui_print("*************************");
+ui_print(" ");

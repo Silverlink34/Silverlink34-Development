@@ -1,0 +1,33 @@
+#Build Template Script by brandongaliher7@gmail.com
+{
+echo '--------------------Changing to build directory-----------------..'
+cd ~/CM10
+echo '----------------Setting bin to path for repo commands..------------'
+PATH=~/bin:$PATH
+echo '-------------------------Beefing up Java..--------------------'
+alias java='java -Xmx2g'
+echo '-------------Autocleaning builds prior to new manifest..----------'
+make clobber
+echo '-----------------------Running Repo Init..------------------------' 
+repo init -u git://github.com/CyanogenMod/android.git -b jellybean-stable
+echo 'Pulling current manifest..'
+echo '-----------------------Pulling current manifest..----------------'
+curl -L -o .repo/local_manifest.xml -O -L https://raw.github.com/STS-Dev-Team/android_local_STS/jellybean-stable-cm-stock/local_manifest.xml
+echo '-----------------------Running Repo Sync..-------------------'
+repo sync -f -j1
+echo '---------------------Changing to build directory..----------------'
+cd ~/CM10
+echo '--------------------------Grabbing prebuilts...--------------' 
+vendor/cm/get-prebuilts
+echo '----------------------Setting up buid environment...---------------'
+. build/envsetup.sh
+echo '---------------------Building CM10..----------'
+brunch spyder -j1
+echo '-------------------If completed, uploading to crackteam...------------'
+cd ~/CM10/out/target/product/spyder
+#make sure there is a putspyderzip file with ftp commands
+sftp -b ~/putspyderzip speedcore@crackflasher.com
+echo '-----------Script is finished, logging and sending to email.---------------'
+} | tee -a 2>&1 ~/logs/CM10_$(date +%d%m%y).log
+nail -s 'Build log' -a ~/logs/CM10_$(date +%d%m%y).log brandongaliher7@gmail.com
+

@@ -1,0 +1,31 @@
+#Build Template Script by brandongaliher7@gmail.com
+{
+echo '--------------------Changing to build directory-----------------..'
+cd ~/*******************************
+echo '----------------Setting bin to path for repo commands..------------'
+PATH=~/bin:$PATH
+echo '-------------------------Beefing up Java..--------------------'
+alias java='java -Xmx2g'
+echo '-------------Autocleaning builds prior to new manifest..----------'
+make clobber
+echo '-----------------------Running Repo Init..------------------------' 
+repo init ***************************
+echo '-----------------------Pulling current manifest..----------------'
+curl *********************************
+echo '-----------------------Running Repo Sync..-------------------'
+repo sync -f -j1
+echo '---------------------Changing to build directory..----------------'
+cd **************************************
+echo '--------------------------Grabbing prebuilts...--------------' 
+vendor/cm/get-prebuilts
+echo '----------------------Setting up buid environment...---------------'
+. build/envsetup.sh
+echo '---------------------Building ****************************..----------'
+brunch spyder -j1
+echo '-------------------If completed, uploading to crackteam...------------'
+cd ~/*********************************/out/target/product/spyder
+#make sure there is a putspyderzip file with ftp commands
+sftp -b ~/putspyderzip speedcore@crackflasher.com
+echo '------------------Script is finished, sending to email.---------------'
+} | tee -a 2>&1 ~/logs/**********************_$(date +%d%m%y).log | nail -s 'Build log' brandongaliher7@gmail.com
+

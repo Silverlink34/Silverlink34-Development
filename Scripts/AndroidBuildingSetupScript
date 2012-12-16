@@ -1,0 +1,24 @@
+echo "Setup Ubuntu 10.0464bit for Android Development Script by 
+#Setup Ubuntu 10.04 64bit for Android Development Script by brandongaliher7@gmail.com"
+echo "Adding repository, downloading and installing Java6 JDK..."
+#Download and install JDK6 by adding a special repository
+sudo add-apt-repository ppa:ferramroberto/java
+sudo apt-get update
+sudo apt-get install sun-java6-jdk
+echo "Installing required packages for development.."
+#Install required packages for development
+sudo apt-get install git-core gnupg flex bison gperf build-essential \
+  zip curl zlib1g-dev libc6-dev lib32ncurses5-dev ia32-libs \
+  x11proto-core-dev libx11-dev lib32readline5-dev lib32z-dev \
+  libgl1-mesa-dev g++-multilib mingw32 tofrodos python-markdown \
+  libxml2-utils xsltproc
+echo "Creating bin in home folder and installing repo in bin..."
+#Install repo to bin for syncing build tree
+mkdir ~/bin
+PATH=~/bin:$PATH
+curl https://dl-ssl.google.com/dl/googlesource/git-repo/repo > ~/bin/repo
+chmod a+x ~/bin/repo
+echo "Done! Now you can begin syncing repos for android builds."
+#Done! Now you can begin syncing repos for android builds.
+
+

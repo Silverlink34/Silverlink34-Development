@@ -1,0 +1,42 @@
+#TSC Tweak Script by Silverlink34
+#Make sure this script and TSCtemplate.tar.gz is in the directory of the rom.
+
+#Functions are listed here
+extract () 
+{
+	tar -xzvf TSCtemplate.tar.gz
+}
+
+#Extract prompt
+while true; do
+	read -p " Would you like to extract TSC Tweaks into the directory containing this script and tar.gz? (Y/N)?" answer
+	case $answer in
+		[Yy]* ) echo "Extracting TSC Tweaks to current directory.."; extract; break;;
+		[Nn]* ) echo "Skipping extract.."; break;;
+		* ) echo "Please answer yes or no.";;
+	esac
+done
+
+#Boot animation prompt
+while true; do
+	read -p " Which rom base is this, so I can add the right boot animation? 
+	Please type CM10, AOKP, AOSP CNA or skip." answer
+	case $answer in
+		[CM10]* ) echo "Adding CM10 Boot Animation.."; cp -f ~/Development/Bootanimations/CM10-TSC/540x960/bootanimation.zip $PWD/system/media;  break;;
+		[AOKP]* ) echo "Adding AOKP Boot Animation.."; break;;
+		[AOSP]* ) echo "Adding AOSP Boot Animation.."; break;;
+		[CNA]* ) echo "Adding CNA Boot Animation..."; break;;
+		[skip]* ) echo "Skipping add boot animation.."; break;;
+		* ) echo "Please answer CM10, AOKP, AOSP, CNA or skip.";;
+	esac
+done
+
+#Replace updater script and build.prop prompt
+while true; do
+	read -p "Please enter the rom base again so I can edit the updater script and build.prop." answer
+	case $answer in
+	[CM10]* ) echo "Replacing lines in build.prop and updater script.."; sed -i -f ~/replacecm10  $PWD/META-INF/com/google/android/updater-script;;
+	[skip]* ) echo "Skipping text replacements.."; break;;
+	* ) echo "Please answer CM10, AOKP, AOSP, CNA or skip.";;
+	esac
+done
