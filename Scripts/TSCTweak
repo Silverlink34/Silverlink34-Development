@@ -9,7 +9,7 @@ extract ()
 }
 oldsig=META-INF/com/google/android/updater-script
 sts=~/Silverlink*/Datafiles/findsts
-ccore~/Silverlink*/Datafiles/replaceccore
+ccore=~/Silverlink*/Datafiles/replaceccore
 enjoy=~/Silverlink*/Datafiles/findenjoy
 initdata=~/Silverlink*/Datafiles/replaceinitdata
 repccus  ()
