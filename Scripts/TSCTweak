@@ -1,12 +1,24 @@
 #TSC Tweak Script by Silverlink34
-#Make sure this script and TSCtemplate.tar.gz is in the directory of the rom.
+#Make sure this script and TSCtemplate.tar.gz is in the directory of the rom. 
+#Also make sure that Silverlink34-Development.git is cloned to home directory.
 
-#Functions are listed here
+#Functions and variables are listed here
 extract () 
 {
 	tar -xzvf TSCtemplate.tar.gz
 }
-
+oldsig=META-INF/com/google/android/updater-script
+sts=~/Silverlink*/Datafiles/findsts
+ccore~/Silverlink*/Datafiles/replaceccore
+enjoy=~/Silverlink*/Datafiles/findenjoy
+initdata=~/Silverlink*/Datafiles/replaceinitdata
+repccus  ()
+{
+	echo 'Replacing Signature..'
+	diff $sts $ccore | patch $oldsig
+	echo 'Adding install init.d and uninstallable data/app functionality..'
+	diff $enjoy $initdata | patch $oldsig
+}
 #Extract prompt
 while true; do
 	read -p " Would you like to extract TSC Tweaks into the directory containing this script and tar.gz? (Y/N)?" answer
@@ -35,7 +47,7 @@ done
 while true; do
 	read -p "Please enter the rom base again so I can edit the updater script and build.prop." answer
 	case $answer in
-	[CM10]* ) echo "Replacing lines in build.prop and updater script.."; sed -i -f ~/replacecm10  $PWD/META-INF/com/google/android/updater-script;;
+	[CM10]* ) echo "Replacing lines in build.prop and updater script.."; repccus; echo "Build.prop replacement is still being worked on. Finishing Script.; break;;
 	[skip]* ) echo "Skipping text replacements.."; break;;
 	* ) echo "Please answer CM10, AOKP, AOSP, CNA or skip.";;
 	esac
