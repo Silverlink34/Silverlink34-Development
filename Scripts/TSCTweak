@@ -47,7 +47,7 @@ done
 while true; do
 	read -p "Please enter the rom base again so I can edit the updater script and build.prop." answer
 	case $answer in
-	[CM10]* ) echo "Replacing lines in build.prop and updater script.."; repccus; echo "Build.prop replacement is still being worked on. Finishing Script.; break;;
+	[CM10]* ) echo "Replacing lines in build.prop and updater script.."; repccus; echo "Build.prop replacement is still being worked on. Finishing Script."; break;;
 	[skip]* ) echo "Skipping text replacements.."; break;;
 	* ) echo "Please answer CM10, AOKP, AOSP, CNA or skip.";;
 	esac
