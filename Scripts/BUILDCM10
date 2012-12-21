@@ -29,5 +29,7 @@ cd ~/CM10/out/target/product/spyder
 sftp -b ~/putspyderzip speedcore@crackflasher.com
 echo '-----------Script is finished, logging and sending to email.---------------'
 } | tee -a 2>&1 ~/logs/CM10_$(date +%d%m%y).log
-nail -s 'Build log' -a ~/logs/CM10_$(date +%d%m%y).log brandongaliher7@gmail.com
+nail -s 'Build log' -a ~/logs/CM10_$(date +%d%m%y).log brandongaliher7@gmail.com deathstar420@gmail.com john.w.thornhill@gmail.com <<-EOF
+EOF
+~.
 
