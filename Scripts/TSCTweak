@@ -34,10 +34,10 @@ while true; do
 	read -p " Which rom base is this, so I can add the right boot animation? 
 	Please type CM10, AOKP, AOSP CNA or skip." answer
 	case $answer in
-		[CM10]* ) echo "Adding CM10 Boot Animation.."; cp -f ~/Silverlink34-Development/Bootanimations/CM10-TSC/540x960/bootanimation.zip $PWD/system/media;  break;;
-		[AOKP]* ) echo "Adding AOKP Boot Animation.."; break;;
-		[AOSP]* ) echo "Adding AOSP Boot Animation.."; break;;
-		[CNA]* ) echo "Adding CNA Boot Animation..."; break;;
+		[CM10]* ) echo "Adding CM10 Boot Animation.."; cp -f ~/Silverlink34-Development/Bootanimations/CM10-TSC/540x960/bootanimation.zip $PWD/system/media; break;;
+		[AOKP]* ) echo "Adding AOKP Boot Animation.."; cp -f ~/Silverlink34-Development/Bootanimations/AOKP-TSC/540x960/bootanimation.zip $PWD/system/media; break;;
+		[AOSP]* ) echo "Adding AOSP Boot Animation.."; cp -f ~/Silverlink34-Development/Bootanimations/AOSP-TSC/540x960/bootanimation.zip $PWD/system/media; break;;
+		[CNA]* ) echo "Adding CNA Boot Animation..."; cp -f ~/Silverlink34-Development/Bootanimations/CNA-Nin/540x960/bootanimation.zip $PWD/system/media; break;;
 		[skip]* ) echo "Skipping add boot animation.."; break;;
 		* ) echo "Please answer CM10, AOKP, AOSP, CNA or skip.";;
 	esac
