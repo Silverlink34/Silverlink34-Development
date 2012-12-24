@@ -3,6 +3,14 @@
 #Also make sure that Silverlink34-Development.git is cloned to home directory.
 
 #Functions and variables are listed here
+getridof ()
+{
+	echo "Removing Unwanted Files.."
+	rm $PWD/system/app/Apollo.apk
+	rm $PWD/system/app/OTAUpdateCenter.apk
+	rm $PWD/system/app/Trebuchet.apk
+	rm $PWD/system/app/VideoEditor.apk
+}
 extract () 
 {
 	tar -xzvf TSCtemplate.tar.gz
@@ -21,9 +29,9 @@ repccus  ()
 }
 #Extract prompt
 while true; do
-	read -p " Would you like to extract TSC Tweaks into the directory containing this script and tar.gz? (Y/N)?" answer
+	read -p " Would you like to extract TSC Tweaks into this directory, and remove unwanted files? (Y/N)?" answer
 	case $answer in
-		[Yy]* ) echo "Extracting TSC Tweaks to current directory.."; extract; break;;
+		[Yy]* ) echo "Extracting TSC Tweaks to current directory.."; getridof; extract; break;;
 		[Nn]* ) echo "Skipping extract.."; break;;
 		* ) echo "Please answer yes or no.";;
 	esac
