@@ -11,13 +11,13 @@ getridof ()
 	rm $PWD/system/app/Trebuchet.apk
 	rm $PWD/system/app/VideoEditor.apk
 }
-extract () 
+icsjb () 
 {
-	tar -xzvf TSCtemplate.tar.gz
+	tar -xzvf icsjbtweaks.tar.gz
 }
-extjbtsc () 
+jbstock () 
 {
-	tar -xzvf TSC-jb-stock.tar.gz
+	tar -xzvf jbstocktweaks.tar.gz
 }
 oldsig=META-INF/com/google/android/updater-script
 sts=~/Silverlink*/Datafiles/findsts
@@ -33,10 +33,10 @@ repccus  ()
 }
 #Extract prompt
 while true; do
-	read -p " Which tweaks would you like to add to this directory? (TSCICSJB or TSCJB)?" answer
+	read -p " Which tweaks would you like to add to this directory? (jbstock or icsjb)?" answer
 	case $answer in
-		[TSCICSJB]* ) echo "Extracting TSC Tweaks to current directory.."; getridof; extract; break;;
-		[TSCJB]* ) "Extracting TSC Tweaks to current directory.."; extjbtsc; break;;
+		[jbstock]* ) echo "Extracting JB TSC Tweaks to current directory.."; jbstock; break;;
+		[icsjb]* ) "Extracting ICS-JB TSC Tweaks to current directory.."; icsjb; getridof; break;;
 		[skip]* ) echo "Skipping Tweaks Extract.."; break;;
 		* ) echo "Please answer yes or no.";;
 	esac
