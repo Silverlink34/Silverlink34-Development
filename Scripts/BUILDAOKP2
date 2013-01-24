@@ -27,8 +27,8 @@ echo '---------------------Building AOKP2----------'
 brunch spyder -j1
 echo '-------------------If completed, uploading to crackteam...------------'
 cd ~/AOKP2/out/target/product/spyder
-#make sure there is a putspyderzip file with ftp commands
-sftp -b ~/putspyderzip speedcore@crackflasher.com
+#make sure there is a putspyderzipaokp file with ftp commands
+sftp -b ~/Silverlink34-Development/Datafiles/putspyderzipaokp speedcore@crackflasher.com
 echo '-----------Script is finished, logging and sending to email.---------------'
 } | tee -a 2>&1 ~/logs/AOKP2_$(date +%d%m%y).log
 nail -s 'Build log' -a ~/logs/AOKP2_$(date +%d%m%y).log brandongaliher7@gmail.com deathstar420@gmail.com john.w.thornhill@gmail.com nothingface1@gmail.com <<-EOF
