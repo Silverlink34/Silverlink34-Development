@@ -1,4 +1,4 @@
-echo "Setup Ubuntu 10.0464bit for Android Development Script by 
+echo "Setup Ubuntu 10.0464bit for Android Development Script by brandongaliher7@gmail.com"
 #Setup Ubuntu 10.04 64bit for Android Development Script by brandongaliher7@gmail.com"
 echo "Adding repository, downloading and installing Java6 JDK..."
 #Download and install JDK6 by adding a special repository
@@ -11,7 +11,7 @@ sudo apt-get install git-core gnupg flex bison gperf build-essential \
   zip curl zlib1g-dev libc6-dev lib32ncurses5-dev ia32-libs \
   x11proto-core-dev libx11-dev lib32readline5-dev lib32z-dev \
   libgl1-mesa-dev g++-multilib mingw32 tofrodos python-markdown \
-  libxml2-utils xsltproc
+  libxml2-utils xsltproc schedtool
 echo "Creating bin in home folder and installing repo in bin..."
 #Install repo to bin for syncing build tree
 mkdir ~/bin
