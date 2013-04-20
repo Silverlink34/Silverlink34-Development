@@ -1,0 +1,34 @@
+#Build Template Script by brandongaliher7@gmail.com
+{
+echo '--------------------Changing to build directory-----------------..'
+mkdir ~/AOKP
+cd ~/AOKP
+echo '----------------Setting bin to path for repo commands..------------'
+PATH=~/bin:$PATH
+echo '-------------------------Beefing up Java..--------------------'
+alias java='java -Xmx2g'
+echo '-------------Autocleaning builds prior to new manifest..----------'
+make clobber
+echo '-----------------------Running Repo Init..------------------------' 
+repo init -u https://github.com/AOKP/platform_manifest.git -b jb-mr1
+echo 'Pulling current manifest..'
+echo '-----------------------Pulling current manifest..----------------'
+curl -L -o .repo/local_manifest.xml -O -L https://raw.github.com/STS-Dev-Team/android_local_STS/AOKP-4.2/local_manifest.xml
+echo '-----------------------Running Repo Sync..-------------------'
+repo sync -f -j1
+echo '---------------------Changing to build directory..----------------'
+cd ~/AOKP
+echo '--------------------------Grabbing prebuilts...--------------' 
+vendor/cm/get-prebuilts
+echo '----------------------Setting up buid environment...---------------'
+. build/envsetup.sh
+echo '---------------------Building AOKP----------'
+brunch spyder -j1
+echo '-------------------If completed, uploading to crackteam...------------'
+cd ~/AOKP2/out/target/product/spyder
+#make sure there is a putspyderzipaokp file with ftp commands
+sftp -b ~/Silverlink34-Development/Datafiles/putspyderzipaokp speedcore@crackflasher.com
+echo '-----------Script is finished, logging and sending to email.---------------'
+} | tee -a 2>&1 ~/logs/AOKP_$(date +%d%m%y).log
+
+
