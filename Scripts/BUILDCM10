@@ -13,7 +13,7 @@ echo '-----------------------Running Repo Init..------------------------'
 repo init -u git://github.com/CyanogenMod/android.git -b cm-10.1
 echo 'Pulling current manifest..'
 echo '-----------------------Pulling current manifest..----------------'
-curl -L -o .repo/local_manifest.xml -O -L https://raw.github.com/STS-Dev-Team/android_local_STS/cm-10.1/local_manifest.xml
+curl -L -o .repo/local_manifests/cm10_1_kexec.xml -O -L https://raw.github.com/STS-Dev-Team/android_local_STS/cm-10.1-kexec/cm10_1_kexec.xml
 echo '-----------------------Running Repo Sync..-------------------'
 repo sync -f -j1
 echo '---------------------Changing to build directory..----------------'
