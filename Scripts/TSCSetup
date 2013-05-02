@@ -1,16 +1,29 @@
-#Build Template Script by brandongaliher7@gmail.com
+#TSC Tweak Script by Silverlink34
+#This script is assuming that you have successfully built a source build, and it will check the build directory. You may also place the source build in the appropriate directory, such as tscwork/aokp.
 
-#Funtions and variables listed here
-tscprompt ()
+#Functions and variables are listed here
+
+sb-pwdprompt-ls ()
 {
-while true; do
-	read -p "Do you want to run TSC Setup? (yes or no)?" answer
+	while true; do
+	read -p "Are we working with a fresh SB or is the SB already in tscwork/ls? (sb or ls)?" answer
 	case $answer in
-		[yes]* ) echo "Launching TSC Setup.."; tscsetup; break;;
-		[no]* ) echo "Leaving source build alone."; break;;
-		* ) echo "Please answer yes or no.";;
+		[sb]* ) echo "Moving LS SB to working directory and performing TSC Tweaking.."; aokp-sb-move; swaggertweak; swaggerzipup; break;;
+		[aokp]* ) echo "Performing TSC Tweaking to SB.."; swaggertweak; swaggerzipup; break;;
+		* ) echo "Please answer sb or ls.";;
 	esac
 done
+sb-pwdprompt-aokp ()
+{
+	while true; do
+	read -p "Are we working with a fresh SB or is the SB already in tscwork/aokp? (sb or aokp)?" answer
+	case $answer in
+		[sb]* ) echo "Moving AOKP SB to working directory and performing TSC Tweaking.."; aokp-sb-move; swaggertweak; swaggerzipup; break;;
+		[aokp]* ) echo "Performing TSC Tweaking to SB.."; swaggertweak; swaggerzipup; break;;
+		* ) echo "Please answer sb or aokp.";;
+	esac
+done
+
 }
 aokp-sb-move ()
 {
@@ -53,39 +66,15 @@ swaggerzipup ()
 	mv SwaggerCore* ~/tscwork/done
 	echo "Completed. Don't forget to rename SwaggerCore."
 }
-tscsetup ()
-{
-aokp-sb-move
-swaggertweak
-swaggerzipup
-}
-echo '--------------------Changing to build directory-----------------..'
-mkdir ~/AOKP
-cd ~/AOKP
-echo '----------------Setting bin to path for repo commands..------------'
-PATH=~/bin:$PATH
-echo '-------------------------Beefing up Java..--------------------'
-alias java='java -Xmx2g'
-echo '-------------Autocleaning builds prior to new manifest..----------'
-make clobber
-echo '-----------------------Running Repo Init..------------------------' 
-repo init -u https://github.com/AOKP/platform_manifest.git -b jb-mr1
-echo '-----------------------Running Repo Sync..-------------------'
-repo sync -f -j1
-echo '-----------------------Running Kernel Add Script..-------------------'
-. ./platform_manifest/manual_add_kernel_manifest.sh
-echo '---------------------Changing to build directory..----------------'
-cd ~/AOKP
-echo '--------------------------Grabbing prebuilts...--------------' 
-vendor/cm/get-prebuilts
-echo '----------------------Setting up buid environment...---------------'
-. build/envsetup.sh
-echo '---------------------Building AOKP----------'
-brunch spyder -j1
-echo '---------Build is finished, running TSC Setup for AOKP ---------------'
-[ -f ~/AOKP/out/target/product/spyder/aokp_spyder_un* ] && tscprompt || echo "TSC Setup cannot find aokp build, it probably failed."
 
-
-
-
-
+#Which build prompt
+#Extract prompt
+while true; do
+	read -p " Currently there are two builds supported, LiquidSmooth and AOKP. Which one are we working with? (ls or aokp)?" answer
+	case $answer in
+		[aokp]* ) echo "AOKP selected. Launching location prompt.."; sb-pwdprompt-aokp; break;;
+		[ls]* ) echo "LiquidSmooth selected. Launching location prompt."; break;;
+		[quit]* ) echo "exiting script.."; break;;
+		* ) echo "Please answer aokp, ls, or quit.";;
+	esac
+done
