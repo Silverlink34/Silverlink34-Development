@@ -1,0 +1,14 @@
+#!/system/bin/sh
+#Adding insecured adb (adbd)
+#Ported to bash script by mattlgroff.
+#Dear Chainfire, learn2OpenSource.
+su -c 'mount -o remount,rw /'
+su -c 'stop adbd'
+su -c 'cat /sbin/adbd > /sbin/adbd.original'
+su -c 'rm /sbin/adbd'
+su -c 'cat /system/usr/adbd > /sbin/adbd'
+su -c 'chown 0.0 /sbin/adbd'
+su -c 'chmod 750 /sbin/adbd'
+su -c 'start adbd'
+su -c 'mount -o remount,ro /'
+

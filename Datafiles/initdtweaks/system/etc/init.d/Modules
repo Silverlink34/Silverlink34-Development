@@ -1,0 +1,19 @@
+#!/system/bin/sh
+# Load Modules
+
+LOG_FILE=/data/evo/modules.log
+
+insmod /system/lib/modules/symsearch.ko
+insmod /system/lib/modules/cifs.ko
+insmod /system/lib/modules/ntfs.ko
+insmod /system/lib/modules/cpufreq_hotplugX.ko
+insmod /system/lib/modules/cpufreq_pegasusq.ko
+insmod /system/lib/modules/cpu_control.ko
+insmod /system/lib/modules/sio-iosched.ko
+
+echo "hotplug" > /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
+echo "noop" > /sys/block/mmcblk0/queue/scheduler
+
+
+
+
