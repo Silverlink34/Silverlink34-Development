@@ -1,0 +1,48 @@
+Notes for App building
+
+-AndroidManifest.xml-
+defines the fundumental concepts of the app and defines its components.
+
+-known elements-
+<uses-sdk> declares compatibility with versions of android. uses android:minSdkVersion and android:targetSdkVersion.
+
+example-
+<uses-sdk android:minSdkVersion="8" android:targetSdkVersion="17" />
+
+-App directories-
+src- Directory for your app's main source files. By default, it includes an Activity class that runs when your app is launched using the app icon.
+
+res-Contains several sub-directories for app resources. Here are just a few:
+drawable-hdpi/
+Directory for drawable objects (such as bitmaps) that are designed for high-density (hdpi) screens. Other drawable directories contain assets designed for other screen densities.
+layout/
+Directory for files that define your app's user interface.
+values/
+Directory for other various XML files that contain a collection of resources, such as string and color definitions.
+
+*When you build and run the default Android app, the default Activity class starts and loads a layout file that says "Hello World." The result is nothing exciting, but it's important that you understand how to run your app before you start developing.
+
+-User Interface-
+The graphical user interface for an Android app is built using a hierarchy of View and ViewGroup objects. View objects are usually UI widgets such as buttons or text fields and ViewGroup objects are invisible view containers that define how the child views are laid out, such as in a grid or a vertical list.
+
+Android provides an XML vocabulary that corresponds to the subclasses of View and ViewGroup so you can define your UI in XML using a hierarchy of UI elements.
+
+-Editing Activity_main.xml-
+Located at res/layout
+
+LinearLayout- LinearLayout is a view group (a subclass of ViewGroup) that lays out child views in either a vertical or horizontal orientation, as specified by the android:orientation attribute. Each child of a LinearLayout appears on the screen in the order in which it appears in the XML.
+
+-Known View Attributes-
+android:layout_width-
+android:layout_height-
+These two attributes are required in every view, they specify the size.
+Options- 
+"match_parent" - matches size of parent view. If this is set on root view then it fills the screen.
+
+android:orientation-
+Forces the activity to use a orientation, "horizontal" or "vertical". LinearLayout forces activity to choose one, an d has to specify one.
+
+android:layout_weight-
+defines a "weight." treats all objects with a weight as a fraction, default weight is 0. Setting only one object to "1" lets it use the rest of the unused screen.
+
+-text fields-

@@ -1,0 +1,68 @@
+#TSC PACkedCore Tweak Script by Silverlink34
+#This script is assuming that you downloaded a PACman ROM source base to the androidbase/pacman directory.
+
+#Functions and variables are listed here
+
+pactweak ()
+{
+	echo "Unzipping build.."
+	mkdir ~/androidbase/pacman/working
+	cd ~/androidbase/pacman/working
+	unzip -a "$FILENAME"
+	echo "Removing Unwanted Files.."
+	rm system/app/Browser.apk
+	rm system/app/Apollo.apk
+	rm system/app/CMFileManager.apk
+	rm system/app/Trebuchet.apk
+	echo "extracting PACkedCore apps and bootanimation.."
+	unzip -a -o ~/Silver*/Datafiles/packedapps.zip
+	echo "Inserting init.d tweaks and modules.."
+	cp -p -r ~/Silver*/Datafiles/initdtweaks/* ~/androidbase/pacman/working/
+	echo "Opening Build prop...please follow steps."
+	echo "Step 1. Rename build to current build and sub in user creator and hosting provider."
+	echo "Step 2. Paste buildproptweaks into the bottom of the build prop."
+	echo "Step 3. Save changes to build.prop and close out of gedit."
+	gedit system/build.prop ~/Silver*/Datafiles/buildproptweaks
+	echo "Opening updater-script...please follow steps."
+	echo "Step 1. Find and replace the signature with PACkedCore Sig into the updater script. Please 	 make sure to enter the version in the sig."
+	echo "Step 2. Find a suitable place near the end to insert tweak installation."
+	echo "Step 3. Find and replace the end installation notes with TSC installation notes." 
+	echo "Step 4. Make sure data is mounted and unmounted correctly."
+	echo "Step 5. Save changes to updater-script and close gedit."
+	gedit META-INF/com/google/android/updater-script ~/Silver*/Datafiles/pac-updater
+	echo "All modifications are complete. Executing Zip and clean command.."
+}
+paczip ()
+{
+	echo "Zipping PACkedCore..."
+	zip -r PACkedCore data system META-INF
+	echo "Cleaning work dir and moving PACkedCore to ~/androidbase/"
+	mv PACkedCore* ~/androidbase 
+	rm -rf data META-INF system
+	cd ~/androidbase/pacman
+	rm -rf working	
+	echo "Completed. Don't forget to rename PACkedCore to current build version."
+}
+
+#Select PACman build prompt
+echo "Select a PACman build."
+
+PS3="Type a number or press any letter key to quit: "
+
+select FILENAME in ~/androidbase/pacman/*;
+do
+	 case $FILENAME in
+        "$quit")
+          echo "Exiting."
+          break
+          ;;
+        *)
+          echo "You picked $FILENAME ($REPLY)"	
+	  echo "Executing PACkedCore tweaks.."
+	  pactweak
+	  echo "Zipping ROM and cleaning work directory.."
+	  paczip
+		break         
+          ;;
+  esac
+done

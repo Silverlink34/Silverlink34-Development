@@ -1,0 +1,39 @@
+#TSC Signature
+
+ui_print(" .--.   .-.    .-. ");
+ui_print("/ _.-' | OO|  | OO|");
+ui_print("\  '-. |   |  |   |");
+ui_print(" '--'  '^^^'  '^^^'");
+ui_print("PACkedCore");
+ui_print("VERSION");
+ui_print("Jelly Bean 4.2.2");
+ui_print("Brought To You By Team SpeedCore");
+ui_print("Devs - Silverlink34");
+ui_print("Testers - larrydp and cmh714");
+ui_print("Hosted on Droidrzr.com and Crackflasher.com");
+
+#Tweak Installation
+
+ui_print("Installing Seeder...");
+ui_print("Created by Ryuinferno @ XDA 2013");
+set_perm(0, 2000, 0755, "/system/bin/seeder");
+set_perm(0, 2000, 0755, "/system/xbin/rngd");
+set_perm(0, 2000, 0755, "/system/xbin/entro");
+set_perm(0, 0, 0777, "/system/etc/init.d/Seeder");
+ui_print("Installing Removable apps...");
+package_extract_dir("data", "/data");
+set_perm_recursive(0, 2000, 0777, 0777, "/data/app");
+
+#TSC Installation notes
+
+ui_print("Finished installing PACkedCore. Enjoy!");
+ui_print("-PLEASE NOTE-");
+ui_print("If you installed this in any slot other than romslot-2");
+ui_print("it will not boot!!!!!!");
+
+#(optional) Data Unmounter
+
+unmount("/data");
+
+
+

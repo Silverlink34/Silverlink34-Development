@@ -22,7 +22,7 @@ liquidtweak ()
 	echo "Step 3. Save changes to build.prop and close out of gedit."
 	gedit system/build.prop ~/Silver*/Datafiles/buildproptweaks
 	echo "Opening updater-script...please follow steps."
-	echo "Step 1. Find and replace the signature with LiquidCore Sig into the updater script. Please make sure to enter the version in the sig."
+	echo "Step 1. Find and replace the signature with LiquidCore Sig into the updater script. Please 	 make sure to enter the version in the sig."
 	echo "Step 2. Find a suitable place near the end to insert tweak installation."
 	echo "Step 3. Find and replace the end installation notes with TSC installation notes." 
 	echo "Step 4. Make sure data is mounted and unmounted correctly."

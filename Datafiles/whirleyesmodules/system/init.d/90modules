@@ -1,0 +1,14 @@
+#!/system/bin/sh
+#
+#--------------------------------------------------------------------
+
+# Load Modules
+
+insmod /system/lib/modules/symsearch.ko
+insmod /system/lib/modules/cpufreq_interactiveX.ko
+insmod /system/lib/modules/cpufreq_hotplugX.ko
+insmod /system/lib/modules/cpufreq_smartass2.ko
+insmod /system/lib/modules/cpufreq_pegasusq.ko
+insmod /system/lib/modules/cpufreq_boostedASS2.ko
+insmod /system/lib/modules/cpu_control.ko
+insmod /system/lib/modules/sio-iosched.ko
