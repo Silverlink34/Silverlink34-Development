@@ -1,8 +1,7 @@
 #Build Template Script by brandongaliher7@gmail.com
 [
 echo '--------------------Changing to build directory-----------------..'
-mkdir ~/Liquidsmooth
-cd ~/Liquidsmooth
+cd ~/liquidsmooth-halo
 echo '----------------Setting bin to path for repo commands..------------'
 PATH=~/bin:$PATH
 echo '-------------------------Beefing up Java..--------------------'
@@ -12,11 +11,14 @@ make clobber
 echo '-----------------------Running Repo Init..------------------------' 
 repo init -u git://github.com/LiquidSmooth/android.git -b jb2
 echo 'Pulling kernel mod..'
+cd ~/liquidsmooth-halo/.repo
+mkdir local_manifests
+cd ~/liquidsmooth-halo
 curl -L -o .repo/local_manifests/kernel_manifest.xml -O -L https://raw.github.com/LiquidSmooth/android_device_motorola_omap4-common/jb2/kernel_manifest.xml
 echo '-----------------------Running Repo Sync..-------------------'
 repo sync -f -j1
 echo '---------------------Changing to build directory..----------------'
-cd ~/Liquidsmooth
+cd ~/liquidsmooth-halo
 echo '----------------------Setting up buid environment...---------------'
 . build/envsetup.sh
 echo '---------------------Building Liquidsmooth----------'

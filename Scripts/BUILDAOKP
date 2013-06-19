@@ -1,64 +1,5 @@
 #Build Template Script by brandongaliher7@gmail.com
 
-#Funtions and variables listed here
-tscprompt ()
-{
-while true; do
-	read -p "Do you want to run TSC Setup? (yes or no)?" answer
-	case $answer in
-		[yes]* ) echo "Launching TSC Setup.."; tscsetup; break;;
-		[no]* ) echo "Leaving source build alone."; break;;
-		* ) echo "Please answer yes or no.";;
-	esac
-done
-}
-aokp-sb-move ()
-{
-	mkdir ~/tscwork
-	mkdir ~/tscwork/aokp
-	cp ~/AOKP/out/target/product/spyder/aokp_spyder_un* ~/tscwork/aokp
-}
-swaggertweak ()
-{
-	echo "Unzipping build.."
-	cd ~/tscwork/aokp
-	unzip -a ~/tscwork/aokp/aokp_spyder_un*
-	echo "Removing Unwanted Files.."
-	rm system/app/Browser.apk
-	rm system/app/Launcher2.apk
-	echo "extracting TSC Tweaks.."
-	tar -xzvf ~/Silver*/Datafiles/swaggertweaks.tgz
-	echo "Opening Build prop...please follow steps."
-	echo "Step 1. Rename build to current build and sub in user creator and hosting provider."
-	echo "Step 2. Paste buildproptweaks into the bottom of the build prop."
-	echo "Step 3. Save changes to build.prop and close out of gedit."
-	gedit system/build.prop ~/Silver*/Datafiles/buildproptweaks
-	echo "Opening updater-script...please follow steps."
-	echo "Step 1. Find and replace the signature with Swagger Sig into the updater script. Please make sure to enter the version in the sig."
-	echo "Step 2. Find a suitable place near the end to insert tweak installation."
-	echo "Step 3. Find and replace the end installation notes with TSC installation notes." 
-	echo "Step 4. Make sure data is mounted and unmounted correctly."
-	echo "Step 5. Save changes to updater-script and close gedit."
-	gedit META-INF/com/google/android/updater-script ~/Silver*/Datafiles/swagger-updater
-	echo "All modifications are complete. Rename Swaggercore.zip to current version." 
-}
-swaggerzipup ()
-{
-	echo "Zipping SwaggerCore..."
-	zip -r SwaggerCore data system META-INF
-	echo "Cleaning work dir and moving swagger to done dir.."
-	rm aokp*
-	rm -rf data META-INF system
-	mkdir ~/tscwork/done
-	mv SwaggerCore* ~/tscwork/done
-	echo "Completed. Don't forget to rename SwaggerCore."
-}
-tscsetup ()
-{
-aokp-sb-move
-swaggertweak
-swaggerzipup
-}
 echo '--------------------Changing to build directory-----------------..'
 mkdir ~/AOKP
 cd ~/AOKP
@@ -82,8 +23,8 @@ echo '----------------------Setting up buid environment...---------------'
 . build/envsetup.sh
 echo '---------------------Building AOKP----------'
 brunch spyder -j1
-echo '---------Build is finished, running TSC Setup for AOKP ---------------'
-[ -f ~/AOKP/out/target/product/spyder/aokp_spyder_un* ] && tscprompt || echo "TSC Setup cannot find aokp build, it probably failed."
+echo '---------Build is finished ---------------'
+
 
 
 
