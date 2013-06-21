@@ -1,0 +1,25 @@
+#Build Template Script by brandongaliher7@gmail.com
+echo '--------------------Cloning carbon-halo repo to home dir..-------'
+cd ~/
+git clone https://github.com/Silverlink34/carbon-halo.git
+echo '--------------------Changing to build directory-----------------..'
+cd ~/carbon-halo
+echo '----------------Setting bin to path for repo commands..------------'
+PATH=~/bin:$PATH
+echo '-------------------------Beefing up Java..--------------------'
+alias java='java -Xmx2g'
+echo '-------------Autocleaning builds prior to new manifest..----------'
+make clobber
+echo '-----------------------Running Repo Init..------------------------' 
+repo init -u git://github.com/CarbonDev/android.git -b jb2
+echo '-----------------------Running Repo Sync..-------------------'
+repo sync -f -j1
+echo '---------------------Changing to build directory..----------------'
+cd carbon-halo
+echo '----------------------Setting up buid environment...---------------'
+. build/envsetup.sh
+echo '---------------------Building Carbon---------------------------'
+brunch spyder -j1
+echo '------------------Script is finished. Go cherry pick if applicable.---------------'
+
+
