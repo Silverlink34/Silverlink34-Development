@@ -18,6 +18,7 @@ mkdir ~/bin
 PATH=~/bin:$PATH
 curl https://dl-ssl.google.com/dl/googlesource/git-repo/repo > ~/bin/repo
 chmod a+x ~/bin/repo
+sudo apt-get install schedtool
 echo "Done! Now you can begin syncing repos for android builds."
 #Done! Now you can begin syncing repos for android builds.
 
