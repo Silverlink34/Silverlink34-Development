@@ -20,6 +20,11 @@ echo '----------------------Setting up buid environment...---------------'
 . build/envsetup.sh
 echo '---------------------Building Carbon---------------------------'
 brunch spyder -j1
-echo '------------------Script is finished. Go cherry pick if applicable.---------------'
+echo '
+echo 'If build completed, moving to completedbuilds in home directory.'
+mkdir ~/completedbuilds
+cd ~/carbon-halo/out/target/product/spyder/
+cp *spyder.zip ~/completedbuilds/
+------------------Script is finished. Go cherry pick if applicable.---------------'
 
 
