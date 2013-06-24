@@ -17,8 +17,8 @@ carbontweak ()
 	unzip -a -o ~/Silver*/Datafiles/carbonapps.zip
 	echo "Inserting init.d tweaks.."
 	cp -p -r ~/Silver*/Datafiles/initdtweaks/* ~/androidbase/carbon/working/
-	echo "Inserting JBX Kernel..."
-	cp -p -r ~/Silver*/Datafiles/jbx/* ~/androidbase/carbon/working/
+	echo "Inserting Whirleyes Kernel Modules..."
+	cp -p -r ~/Silver*/Datafiles/whirleyesmodules/* ~/androidbase/carbon/working/
 	echo "Opening Build prop...please follow steps."
 	echo "Step 1. Rename build to current build and sub in user creator and hosting provider."
 	echo "Step 2. Paste buildproptweaks into the bottom of the build prop."
