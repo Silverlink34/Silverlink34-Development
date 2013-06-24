@@ -1,0 +1,69 @@
+#TSC carbonCore Tweak Script by Silverlink34
+#This script is assuming that you downloaded a carbon source base to the androidbase/carbon directory.
+
+#Functions and variables are listed here
+
+carbontweak ()
+{
+	echo "Unzipping build.."
+	mkdir ~/androidbase/carbon/working
+	cd ~/androidbase/carbon/working
+	unzip -a "$FILENAME"
+	echo "Removing Unwanted Files.."
+	rm system/app/Browser.apk
+	rm system/app/CMFileManager.apk
+	rm system/app/Launcher2.apk
+	echo "extracting carbonCore apps and bootanimation.."
+	unzip -a -o ~/Silver*/Datafiles/carbonapps.zip
+	echo "Inserting init.d tweaks.."
+	cp -p -r ~/Silver*/Datafiles/initdtweaks/* ~/androidbase/carbon/working/
+	echo "Inserting JBX Kernel..."
+	cp -p -r ~/Silver*/Datafiles/jbx/* ~/androidbase/carbon/working/
+	echo "Opening Build prop...please follow steps."
+	echo "Step 1. Rename build to current build and sub in user creator and hosting provider."
+	echo "Step 2. Paste buildproptweaks into the bottom of the build prop."
+	echo "Step 3. Save changes to build.prop and close out of gedit."
+	gedit system/build.prop ~/Silver*/Datafiles/buildproptweaks
+	echo "Opening updater-script...please follow steps."
+	echo "Step 1. Find and replace the signature with carbonCore Sig into the updater script. 		Please make sure to enter the version in the sig."
+	echo "Step 2. Find a suitable place near the end to insert tweak installation."
+	echo "Step 3. Find and replace the end installation notes with TSC installation notes." 
+	echo "Step 4. Make sure data is mounted and unmounted correctly."
+	echo "Step 5. Save changes to updater-script and close gedit."
+	gedit META-INF/com/google/android/updater-script ~/Silver*/Datafiles/carbon-updater
+	echo "All modifications are complete. Executing Zip and clean command.."
+}
+carbonzip ()
+{
+	echo "Zipping carbonCore..."
+	zip -r CarbonCore data system META-INF
+	echo "Cleaning work dir and moving carbonCore to ~/androidbase/"
+	mv CarbonCore* ~/androidbase 
+	rm -rf data META-INF system
+	cd ~/androidbase/carbon
+	rm -rf working	
+	echo "Completed. Don't forget to rename CarbonCore to current build version."
+}
+
+#Select carbon build prompt
+echo "Select a carbon build."
+
+PS3="Type a number or press any letter key to quit: "
+
+select FILENAME in ~/androidbase/carbon/*;
+do
+	 case $FILENAME in
+        "$quit")
+          echo "Exiting."
+          break
+          ;;
+        *)
+          echo "You picked $FILENAME ($REPLY)"	
+	  echo "Executing CarbonCore tweaks.."
+	  carbontweak
+	  echo "Zipping ROM and cleaning work directory.."
+	  carbonzip
+		break         
+          ;;
+  esac
+done

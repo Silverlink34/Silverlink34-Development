@@ -21,10 +21,11 @@ echo '----------------------Setting up buid environment...---------------'
 echo '---------------------Building Carbon---------------------------'
 brunch spyder -j1
 echo '
-echo 'If build completed, moving to completedbuilds in home directory.'
-mkdir ~/completedbuilds
+echo 'If build completed, moving to androidbase/carbon in home directory.'
+mkdir ~/androidbase
+mkdir ~/androidbase/carbon
 cd ~/carbon-halo/out/target/product/spyder/
-cp *spyder.zip ~/completedbuilds/
+cp *spyder.zip ~/androidbase/carbon
 ------------------Script is finished. Go cherry pick if applicable.---------------'
 
 

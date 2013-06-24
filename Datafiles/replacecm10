@@ -1,3 +1,0 @@
-sts="~/findsts"
-ccore="~/replaceccore"
-sed -i "s/"sts"/gay/g' ~/Roms/beancorev1.zip/META-INF/com/google/android/updater-script
