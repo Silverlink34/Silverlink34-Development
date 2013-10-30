@@ -5,11 +5,11 @@ ui_print("/  ` /\ |__)|__)/  \|\ |/  `/  \|__)|__  ");
 ui_print("\__,/~~\|  \|__)\__/| \|\__,\__/|  \|___ ");
 ui_print("                                         ");
 ui_print("VERSION");
-ui_print("Jelly Bean 4.2.2");
+ui_print("Jelly Bean");
 ui_print("Brought To You By Team SpeedCore");
 ui_print("Devs - Silverlink34");
-ui_print("Testers - larrydp and cmh714");
-ui_print("Hosted on Droidrzr.com and Crackflasher.com");
+ui_print("Hosted on Brandonswebportal.net/tsc");
+ui_print("Leave comments at Brandonswebportlal.net/tsc/blog");
 
 #Tweak Installation
 
