@@ -9,7 +9,7 @@ ui_print("Jelly Bean");
 ui_print("Brought To You By Team SpeedCore");
 ui_print("Devs - Silverlink34");
 ui_print("Hosted on Brandonswebportal.net/tsc");
-ui_print("Leave comments at Brandonswebportlal.net/tsc/blog");
+ui_print("Leave comments at Brandonswebportal.net/tsc/blog");
 
 #Tweak Installation
 
