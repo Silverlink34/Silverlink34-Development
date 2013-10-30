@@ -30,8 +30,9 @@ ui_print("-PLEASE NOTE-");
 ui_print("If you installed this in any slot other than romslot-1");
 ui_print("it will not boot!!!!!!");
 
-#(optional) Data Unmounter
+#(optional) Data Mount/Unmount
 
+mount("ext3", "EMMC", "/dev/block/userdata", "/data");
 unmount("/data");
 
 
