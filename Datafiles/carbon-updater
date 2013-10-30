@@ -26,7 +26,7 @@ set_perm_recursive(0, 2000, 0777, 0777, "/data/app");
 #TSC Installation notes
 
 ui_print("Finished installing CarbonCore. Enjoy!");
-ui_print("-PLEASE NOTE-");
+ui_print("-SafeStrap Users PLEASE NOTE-");
 ui_print("If you installed this in any slot other than romslot-1");
 ui_print("it will not boot!!!!!!");
 
